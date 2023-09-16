@@ -1,38 +1,242 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Alata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'ABeeZee', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --white: #FFFCF2;
+  --black: #000000;
+  --orange: #EB5E28;
+  --seaGreen: #0A8754;
+  --darkGreen: #004F2D;
+
+  --tran-03: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.4s ease;
+  --tran-05: all 0.5s ease;
+  --tran-06: all 0.6s ease;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
   min-height: 100vh;
+  background-color: var(--white);
+  transition: var(--tran-05);
+  color: var(--black);
+}
+
+::selection {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 10px 14px;
+  background: var(--seaGreen);
+  z-index: 100;
+  color: var(--white);
+  width: 200px;
+  overflow-x: hidden;
+  white-space: nowrap;
   display: flex;
+  justify-content: space-evenly;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+article {
+  margin-left: 250px;
+}
+
+h3 {
+  padding: 5px 20px;
+}
+
+div.title h1 {
+  height: 80px;
+  line-height: 80px;
+  color: var(--white);
+  font-family: 'Alata', sans-serif;
+}
+
+div#footer {
+  background: var(--black);
+  color: var(--white);
+  position:absolute;
+  bottom: 0;
+  width: calc(100% - var(--sidebar-width)) ; 
+  height: 3.5rem;
+}
+
+div#footer p {
+  padding: 20px 10px;
+}
+
+div.title {
+  background-color: var(--orange);
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-self: center;
+}
+
+.title_image {
+  height: 100px;
+}
+
+.mainContent {
+  padding: 20px;
+  padding-bottom: 5rem
+}
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: var(--white);
+  display: block;
+}
+
+.material-icons,
+.icon-text {
+  vertical-align: middle;
+}
+
+.material-icons {
+  padding-bottom: 3px;
+  margin-right: 30px;
+}
+
+.main {
+  padding-left: 16px;
+  padding-bottom: 16px;
+  padding-right: 16px;
+  margin-left: 200px;
+  transition: margin-left var(--tran-03);
+  height: 100%;
+  padding: var(--default);
+  position: relative;
+  min-height: 100vh;
+}
+
+.below {
+  padding: var(--default);
+}
+
+.echia {
+  font-family: 'Alata', sans-serif;
+}
+
+.search {
+  position: relative;
+  height: 50px;
+}
+
+.search .input {
+  background-color: #fff;
+  border: 0;
+  font-size: 18px;
+  padding: 15px;
+  height: 50px;
+  width: 50px;
+  transition: width 0.3s ease;
+}
+
+.btn {
+  background-color: #fff;
+  border: 0;
+  cursor: pointer;
+  font-size: 24px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 50px;
+  transition: transform 0.3s ease;
+}
+
+.btn:focus,
+.input:focus {
+  outline: none;
+}
+
+.search.active .input {
+  width: 200px;
+}
+
+.search.active .btn {
+  transform: translateX(198px);
+}
+
+.cards-list {
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 30px auto;
+  width: 300px;
+  height: 300px;
+  border-radius: 40px;
+box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.card .card_image {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+}
+
+.card .card_image img {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+  object-fit: cover;
+}
+
+.card .card_title {
+  text-align: center;
+  border-radius: 0px 0px 40px 40px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: -80px;
+  height: 40px;
+}
+
+.card:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+    -5px -5px 30px 15px rgba(0,0,0,0.22);
+}
+
+.title-white {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.title-black {
+  color: black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media all and (max-width: 500px) {
+  .card-list {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
   }
 }

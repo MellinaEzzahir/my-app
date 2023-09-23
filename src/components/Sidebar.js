@@ -9,15 +9,15 @@ function Sidebar() {
       </a><br />
       <a href="Search.html">
         <i className="material-icons">spa</i>
-        <span class="icon-text">Search</span>
+        <span class="icon-text">Plants</span>
       </a><br/>
       <a href="#">
         <i class="material-icons">monetization_on</i>
-        <span class="icon-text">clients</span>
+        <span class="icon-text">???</span>
       </a><br/>
       <a href="#">
         <i class="material-icons">email</i>
-        <span class="icon-text">contact</span>
+        <span class="icon-text">???</span>
       </a>
     </div>
   );

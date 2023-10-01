@@ -1,11 +1,10 @@
-import PropTypes from 'prop-types'; // ES6
 import Plant from './Plant';
 import { useState } from "react";
-import Switch from '../../node_modules/react-switch/dist/react-switch'; //'./toggle-switch/toggleSwitch';
 
 const plants = [
   {
     name: "Echeveria acutifolia", nickname: "none",
+    hardy: "unknown",
     Varieties: [
       "none"
     ],
@@ -15,23 +14,87 @@ const plants = [
     Hybrids: [
       "none"
     ],
-    image: "../images/Echavaria.jpg"
+    Forms: [
+      "none"
+    ],
+    Toxicity: [
+      { toBirds: "none" },
+      { toCats: "none" },
+      { toDogs: "none" },
+      { toHorses: "none" },
+      { toLivestock: "none" },
+      { toPeople: "none" }
+    ],
+
+    soilType: "Well Drained/Light",
+    Sun: "Part shade, full sun",
+    Aspect: "any",
+
+    Characteristics: [
+      { Height: 15 },
+      { Spread: 30 },
+      { FlowerColour1: "orange" },
+      { FlowerColour2: "yellow" },
+      { FoliageColour: "green" }
+    ],
+
   },
   {
-    name: "Echeveria acutifolia2", nickname: "none",
+    name: "Echeveria agavoides", nickname: "Molded Wax Agave",
+    hardy: "unknown",
     Varieties: [
-      "none"
+      { varietyName: "agavoides" },
+      { varietyName: "corderoyi" },
+      { varietyName: "multifida" },
+      { varietyName: "prolifera" }
     ],
     Cultivars: [
-      "none"
+      { cultivarName: "Aquamarine", detail: "icy, emerald-green leaves" },
+      { cultivarName: "Ebony", detail: "lighter-couloured leaves(beige or peach) with dark brown edges almost dark red" },
+      { cultivarName: "Lipstick", detail: "neon green leaves and red edges" },
+      { cultivarName: "Luming", detail: "reddish, maroon-magenta leaves almost dark purple and pointed leaves" },
+      { cultivarName: "Oculus", detail: "covered in a dark red" },
+      { cultivarName: "Rose Garnet", detail: "faint neon-green leaves of rather large and sturdy shape, tipped with magenta pink and maturing to red" },
+      { cultivarName: "Rubra", detail: "with dark reddish leaves growing in a notably tight, almost 'closed' rosette" },
+      { cultivarName: "Salu", detail: "grows in a considerably tighter, closed rosette, with pale green leaves lightly tipped in red. Small 'point' to the ends of the leaves, which mature to red" }
     ],
     Hybrids: [
+      { hybridName: "Echeveria agavoides 'Maria'" },
+      { hybridName: "Echeveria agavoides 'Romeo'" },
+      { hybridName: "Echeveria agavoides 'Scarlet'" },
+      { hybridName: "Echeveria agavoides 'Love's Fire'" },
+    ],
+    Forms: [
       "none"
     ],
-    image: "../images/Echavaria.jpg"
+    Toxicity: [
+      { toBirds: "none" },
+      { toCats: "none" },
+      { toDogs: "none" },
+      { toHorses: "none" },
+      { toLivestock: "none" },
+      { toPeople: "none" }
+    ],
+    Soil: [
+      { type: "Well Drained/Light/Sandy" }
+    ],
+    Position: [
+      { Sun: "Dappled shade, full sun" },
+      { Aspect: "South facing, west facing" }
+    ],
+
+    Characteristics: [
+      { Height: 12 },
+      { Spread: 30 },
+      { FlowerColour1: "red" },
+      { FlowerColour2: "yellow" },
+      { FoliageColour: "green" }
+    ]
+
   },
   {
-    name: "Echeveria acutifolia3", nickname: "none",
+    name: "Echeveria acutifolia", nickname: "none",
+    hardy: "unknown",
     Varieties: [
       "none"
     ],
@@ -41,24 +104,55 @@ const plants = [
     Hybrids: [
       "none"
     ],
-    image: "../images/Echavaria.jpg"
+    Forms: [
+      "none"
+    ],
+    Toxicity: [
+      { toBirds: "none" },
+      { toCats: "none" },
+      { toDogs: "none" },
+      { toHorses: "none" },
+      { toLivestock: "none" },
+      { toPeople: "none" }
+    ],
+    Soil: [
+      { type: "Well Drained/Light" }
+    ],
+    Position: [
+      { Sun: "Part shade, full sun" },
+      { Aspect: "any" }
+    ],
+
+
+    Characteristics: [
+      { Height: 15 },
+      { Spread: 30 },
+      { FlowerColour1: "orange" },
+      { FlowerColour2: "yellow" },
+      { FoliageColour: "green" }
+    ],
+
   }
 ];
 
 function Plants() {
   const [index, setIndex] = useState(0);
   const [checked, setChecked] = useState(false);
-  const handleChange = val => {
-    setChecked(val)
+  //this.handleChange = this.handleChange.bind(this);
+
+  const handleChange = e => {
+    setChecked(e.target.checked);
   }
   var myList = plants;
   return (
     <div>
-      <div>
-      <Switch className="react-switch" checked={checked} onChange={handleChange} />
-      </div>
+      <label class="switch">
+        <input type="checkbox" onChange={(e) => handleChange(e)} id="modeSwitch" />
+        <span class="slider round"></span>
+      </label>
+
       <p>
-        The switch is <span>{checked ? "on" : "off"}</span>.
+        
       </p>
       <div>
         <h2>This is my list of plants</h2>
@@ -73,27 +167,26 @@ function Plants() {
           </div>
         }
         {!checked &&
-          <div>
+          <div className='view2'>
             <div><h2>Another view</h2></div>
             <div className='nextPrevious'>
-            
-              <div className='previous'><button onClick={() => previous()}><img src='/images/icons8-back-50.png'/></button> </div>
+              <div className='previous'><button onClick={() => previous()}><img src='/images/icons8-back-50.png' alt='previous button' /></button> </div>
               <div><Plant plant={myList[index]} /></div>
-              <div className='next'><button onClick={() => next()}><img src='/images/icons8-forward-50.png'/></button> </div>
+              <div className='next'><button onClick={() => next()}><img src='/images/icons8-forward-50.png' alt='next button' /></button> </div>
             </div>
           </div>
         }
-        </div>
-      </div>);
-      function previous() {
-  if (index > 0)
+      </div>
+    </div>);
+  function previous() {
+    if (index > 0)
       setIndex(index - 1);
-}
-      function next() {
-  if (index < 2)
+  }
+  function next() {
+    if (index < 2)
       setIndex(index + 1);
-}
+  }
 
 }
 
-      export default Plants;
+export default Plants;
